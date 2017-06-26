@@ -6,9 +6,31 @@
  * @return { Number }         Lowest Positive Number that is evenly divisible by all numbers
  *                            between 1 and `ceiling`
  */
-module.exports = function( ceiling ) {
-  // do work here
+ module.exports = function( num ) {
+  if (num ===1){
+    return 1;
+  }
+  let factors = [];
+  let result;
+  for (let i = 2; i <= num; i++){
+    factors.push(i);
+  }
+  while (!result) {
+    let allFactorsPass = true;
 
+    for (let i = 0; i < factors.length ; i++){
+      if (num % factors[i] !== 0){
+        allFactorsPass = false;
+      }
+      if (allFactorsPass) {
+        result = num;
+      }
+      else {
+        num++;
+      }
 
-  return 0;
+    }
+  }
+  return result;
 };
+console.log(module.exports(10));
